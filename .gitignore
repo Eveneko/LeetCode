@@ -4,4 +4,8 @@
 # MAC
 .DS_Store
 
+# Google code style
+.clang-format
+
+# Other
 README.pdf
