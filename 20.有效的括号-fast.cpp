@@ -60,15 +60,16 @@
 using namespace std;
 
 class Solution {
-  public:
+   public:
     stack<char> st;
-    bool        isValid(string s)
-    {
+    bool isValid(string s) {
         for (char ch : s) {
             switch (ch) {
                 case '(':
                 case '[':
-                case '{': st.push(ch); break;
+                case '{':
+                    st.push(ch);
+                    break;
                 case ')':
                     if (st.empty() || st.top() != '(')
                         return false;

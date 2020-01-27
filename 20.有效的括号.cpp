@@ -60,11 +60,10 @@
 using namespace std;
 
 class Solution {
-  public:
+   public:
     stack<char> st;
-    bool        isValid(string s)
-    {
-        int  len = s.length();
+    bool isValid(string s) {
+        int len = s.length();
         char top;
         for (int i = 0; i < len; i++) {
             if (st.empty())

@@ -14,9 +14,9 @@
  * Testcase Example:  '[[1,4,5],[1,3,4],[2,6]]'
  *
  * 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
- * 
+ *
  * 示例:
- * 
+ *
  * 输入:
  * [
  * 1->4->5,
@@ -24,7 +24,7 @@
  * 2->6
  * ]
  * 输出: 1->1->2->3->4->4->5->6
- * 
+ *
  */
 
 // @lc code=start
@@ -40,18 +40,18 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     queue<ListNode*> qu;
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        for(auto li : lists){
+        for (auto li : lists) {
             qu.push(li);
         }
 
-        if(qu.empty()){
+        if (qu.empty()) {
             return nullptr;
         }
 
-        while(qu.size() > 1){
+        while (qu.size() > 1) {
             ListNode* l1 = qu.front();
             qu.pop();
             ListNode* l2 = qu.front();
@@ -64,19 +64,16 @@ public:
         return res;
     }
 
-    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2)
-    {
-        if(!l1) return l2;
-        if(!l2) return l1;
-        if(l1->val <= l2->val){
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        if (!l1) return l2;
+        if (!l2) return l1;
+        if (l1->val <= l2->val) {
             l1->next = mergeTwoLists(l1->next, l2);
             return l1;
-        }else
-        {
+        } else {
             l2->next = mergeTwoLists(l1, l2->next);
             return l2;
-        }   
+        }
     }
 };
 // @lc code=end
-

@@ -14,9 +14,9 @@
  * Testcase Example:  '[1,2,3]'
  *
  * 给定一个没有重复数字的序列，返回其所有可能的全排列。
- * 
+ *
  * 示例:
- * 
+ *
  * 输入: [1,2,3]
  * 输出:
  * [
@@ -27,7 +27,7 @@
  * ⁠ [3,1,2],
  * ⁠ [3,2,1]
  * ]
- * 
+ *
  */
 
 // @lc code=start
@@ -35,15 +35,14 @@
 using namespace std;
 
 class Solution {
-public:
+   public:
     vector<vector<int>> permute(vector<int>& nums) {
         sort(nums.begin(), nums.end());
-        vector<vector<int> > res;
-        do{
+        vector<vector<int>> res;
+        do {
             res.push_back(nums);
-        }while (next_permutation(nums.begin(), nums.end()));
+        } while (next_permutation(nums.begin(), nums.end()));
         return res;
     }
 };
 // @lc code=end
-

@@ -38,29 +38,29 @@
 using namespace std;
 
 class Solution {
- public:
-  int maxArea(vector<int> &height) {
-    int len = height.size();
-    int start = 0;
-    int end = len - 1;
-    int res = 0;
-    while (end - start > 0) {
-      res = max(res, (end - start) * min(height[start], height[end]));
-      if (height[start] < height[end]) {
-        int tmp = height[start];
+   public:
+    int maxArea(vector<int>& height) {
+        int len = height.size();
+        int start = 0;
+        int end = len - 1;
+        int res = 0;
         while (end - start > 0) {
-          start++;
-          if (height[start] > tmp) break;
+            res = max(res, (end - start) * min(height[start], height[end]));
+            if (height[start] < height[end]) {
+                int tmp = height[start];
+                while (end - start > 0) {
+                    start++;
+                    if (height[start] > tmp) break;
+                }
+            } else {
+                int tmp = height[end];
+                while (end - start > 0) {
+                    end--;
+                    if (height[end] > tmp) break;
+                }
+            }
         }
-      } else {
-        int tmp = height[end];
-        while (end - start > 0) {
-          end--;
-          if (height[end] > tmp) break;
-        }
-      }
+        return res;
     }
-    return res;
-  }
 };
 // @lc code=end

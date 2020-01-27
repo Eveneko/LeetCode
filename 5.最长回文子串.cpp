@@ -14,20 +14,20 @@
  * Testcase Example:  '"babad"'
  *
  * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
- * 
+ *
  * 示例 1：
- * 
+ *
  * 输入: "babad"
  * 输出: "bab"
  * 注意: "aba" 也是一个有效答案。
- * 
- * 
+ *
+ *
  * 示例 2：
- * 
+ *
  * 输入: "cbbd"
  * 输出: "bb"
- * 
- * 
+ *
+ *
  */
 #include <bits/stdc++.h>
 using namespace std;
@@ -74,18 +74,14 @@ using namespace std;
 //         return s.substr(start, maxlen);
 //     }
 // };
-class Solution
-{
-public:
-    string longestPalindrome(string s)
-    {
+class Solution {
+   public:
+    string longestPalindrome(string s) {
         // 如果字符串为空
-        if (s.empty())
-            return "";
+        if (s.empty()) return "";
         // 对字符串做一个处理，这样字符串的长度永远都是奇数
         string prep = "#";
-        for (auto ch : s)
-        {
+        for (auto ch : s) {
             prep += ch;
             prep += "#";
         }
@@ -93,22 +89,20 @@ public:
         vector<int> dp(size_p, 0);
         // C是回文串的中心，R是回文串的最右端
         int C = 0, R = 0;
-        for (int i = 0; i < size_p; i++)
-        {
+        for (int i = 0; i < size_p; i++) {
             // mirror是i关于C的对称点
             int mirror = C - (i - C);
             dp[i] = R <= i ? 0 : min(R - i, dp[mirror]);
             int start = i - dp[i], end = i + dp[i];
             // 中心扩展
-            while (start - 1 >= 0 && end + 1 < size_p && prep[start - 1] == prep[end + 1])
-            {
+            while (start - 1 >= 0 && end + 1 < size_p &&
+                   prep[start - 1] == prep[end + 1]) {
                 --start;
                 ++end;
                 ++dp[i];
             }
             // 更新R和C
-            if (i + dp[i] > R)
-            {
+            if (i + dp[i] > R) {
                 R = i + dp[i];
                 C = i;
             }

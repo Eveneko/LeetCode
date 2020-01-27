@@ -29,30 +29,30 @@
 using namespace std;
 
 class Solution {
- public:
-  int threeSumClosest(vector<int>& nums, int target) {
-    sort(nums.begin(), nums.end());
-    int len = nums.size();
-    int res = nums[0] + nums[1] + nums[2];
-    int min_diff = abs(target - res);
-    for (int i = 0; i < len - 2; i++) {
-      int start = i + 1;
-      int end = len - 1;
-      while (end > start) {
-        int sum = nums[start] + nums[end] + nums[i];
-        int diff = abs(target - sum);
-        if (diff == 0) return sum;
-        if (diff < min_diff) {
-          min_diff = diff;
-          res = sum;
+   public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int len = nums.size();
+        int res = nums[0] + nums[1] + nums[2];
+        int min_diff = abs(target - res);
+        for (int i = 0; i < len - 2; i++) {
+            int start = i + 1;
+            int end = len - 1;
+            while (end > start) {
+                int sum = nums[start] + nums[end] + nums[i];
+                int diff = abs(target - sum);
+                if (diff == 0) return sum;
+                if (diff < min_diff) {
+                    min_diff = diff;
+                    res = sum;
+                }
+                if (sum < target)
+                    start++;
+                else
+                    end--;
+            }
         }
-        if (sum < target)
-          start++;
-        else
-          end--;
-      }
+        return res;
     }
-    return res;
-  }
 };
 // @lc code=end

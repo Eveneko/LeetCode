@@ -41,26 +41,26 @@
 using namespace std;
 
 class Solution {
- public:
-  bool cmp(const string str1, const string str2) {
-    return str1.length() <= str2.length();
-  }
-  string longestCommonPrefix(vector<string>& strs) {
-    sort(strs.begin(), strs.end());
-    if (strs.size() == 0) return "";
-    string res = strs[0];
-    for (int i = 1; i < strs.size(); i++) {
-      string tmp = "";
-      for (int j = 0; j < strs[i].length(); j++) {
-        if (res[j] == strs[i][j])
-          tmp += res[j];
-        else {
-          res = tmp;
-          break;
-        }
-      }
+   public:
+    bool cmp(const string str1, const string str2) {
+        return str1.length() <= str2.length();
     }
-    return res;
-  }
+    string longestCommonPrefix(vector<string>& strs) {
+        sort(strs.begin(), strs.end());
+        if (strs.size() == 0) return "";
+        string res = strs[0];
+        for (int i = 1; i < strs.size(); i++) {
+            string tmp = "";
+            for (int j = 0; j < strs[i].length(); j++) {
+                if (res[j] == strs[i][j])
+                    tmp += res[j];
+                else {
+                    res = tmp;
+                    break;
+                }
+            }
+        }
+        return res;
+    }
 };
 // @lc code=end
